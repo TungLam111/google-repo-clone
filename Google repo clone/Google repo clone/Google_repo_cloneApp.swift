@@ -1,17 +1,23 @@
-//
-//  Google_repo_cloneApp.swift
-//  Google repo clone
-//
-//  Created by phan dam tung lam on 18/9/24.
-//
-
 import SwiftUI
 
 @main
+
 struct Google_repo_cloneApp: App {
+    @ObservedObject var rootViewModel = RootViewModel();
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $rootViewModel.navPath) {
+                ProfileView(viewModel: DependencyInjector.instance.viewModelsDI.profile(navigationCoordinator: rootViewModel))
+                        .navigationDestination(for: RootViewModel.Destination.self) { destination in
+                            switch destination {
+                            case .profile(let vm):
+                                ProfileView(viewModel: vm)
+                            }
+                        }
+            
+                
+            }
         }
     }
 }
+
