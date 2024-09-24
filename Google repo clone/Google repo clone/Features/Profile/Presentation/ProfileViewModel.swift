@@ -33,7 +33,7 @@ class ProfileViewModel: BaseViewModel {
         let authStorage = AuthenticationLocalStorage(defaults: UserDefaults.standard)
         let accessToken = authStorage.getAccessToken()
         if (accessToken == nil || accessToken == "") {
-            _ = authStorage.saveAccessToken(token: "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")
+            _ = authStorage.saveAccessToken(token: "xxx")
         }
     }
     
